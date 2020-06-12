@@ -1,0 +1,10 @@
+endpoint: http://localhost:4466
+datamodel:
+  - ./src/models/Cast.prisma
+  - ./src/models/Enums.prisma
+  - ./src/models/Movies.prisma
+  - ./src/models/User.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/

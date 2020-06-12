@@ -1,0 +1,6 @@
+type Cast { 
+  id: ID! @id
+  name: String!
+  lastName: String!
+  movies: [Movie!]! @relation(references: [id])
+}

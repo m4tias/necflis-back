@@ -1,0 +1,7 @@
+type Movie {
+  id: ID! @id
+  name: String!
+  description: String!
+  cast: [Cast!]! @relation(references: [id])
+  genre: [Genre!]! @scalarList(strategy: RELATION)
+}

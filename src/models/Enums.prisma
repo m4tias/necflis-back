@@ -1,0 +1,7 @@
+enum Genre {
+  DRAMA,
+  ACTION,
+  COMEDY,
+  ROMANCE,
+  SCIFI
+}
