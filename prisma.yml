@@ -1,10 +1,12 @@
 endpoint: http://localhost:4466
 datamodel:
-  - ./src/models/Cast.prisma
-  - ./src/models/Enums.prisma
-  - ./src/models/Movies.prisma
-  - ./src/models/User.prisma
+  - ./database/models/Cast.prisma
+  - ./database/models/Enums.prisma
+  - ./database/models/Movies.prisma
+  - ./database/models/User.prisma
 
 generate:
   - generator: javascript-client
-    output: ./generated/prisma-client/
+    output: ./server/generated/prisma-client/
+  - generator: graphql-schema
+    output: ./server/generated/prisma-schema.graphql

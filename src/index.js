@@ -1,19 +1,20 @@
 const { GraphQLServer } = require('graphql-yoga');
+const { prisma } = require('../server/generated/prisma-client');
+const resolvers = require('./resolvers');
 
-const typeDefs = `
-  type Query {
-    hello: String!
-  }
-`
+const server = new GraphQLServer({
+  typeDefs: './src/schema.graphql',
+  resolvers,
+  context: (req) => ({ ...req, prisma }),
+});
 
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!'
-  }
-}
+const options = {
+  port: 8000,
+  cors: {
+    origin: '*',
+  },
+};
 
-const server = new GraphQLServer({ typeDefs, resolvers });
-
-server.start(() => {
-  console.log('Funcando')
-})
+server.start(options, () => {
+  console.log('Server running on http://localhost:8000');
+});
